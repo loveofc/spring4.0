@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		 MavenBuildRunner mvnBuildRunner = new MavenBuildRunner(); 
+		 mvnBuildRunner.setMavenPath("c:\apche-maven-3.1.1"); 
+		
+		 Project project = new Project(); 
+	 	 project.setSrcDirs(new ArrayList<>()); 
+	 	 srcDirs.add("src/");
+	 	 srcDirs.add("srcResources/");
+	 	 project.setBinDir("bin/");
+	 	 project.setBuildRunner(mvnBuildRunner);
+	 	 아래와 지금 이코드는 같다.
+	-->
+	<bean id="MavenBuildRunner"
+		class="net.madvirus.spring4.ch01.MavenBuildRunner">
+		<property name="mavenPath">
+			<value>c:\apche-maven-3.1.1</value>
+		</property>
+	</bean>
+
+	<bean id="Project" class="net.madvirus.spring4.ch01.Project">
+		<property name="srcDirs">
+			<list>
+				<value>src/</value>
+				<value>srcResources/</value>
+			</list>
+		</property>
+		<property name="binDir" value="bin/" />
+		<property name="buildRunner" ref="MavenBuildRunner" />
+	</bean>
+
+
+
+</beans>
